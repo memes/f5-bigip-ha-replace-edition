@@ -1,0 +1,19 @@
+# Ignore my direnv setup
+.envrc
+.direnv
+.tool-versions
+
+# Ignore generated Gorelease binaries
+dist/
+
+# Ignore Ruby
+.bundle
+Gemfile.lock
+
+# Ignore Terraform state and automatic var files - except examples
+.terraform
+.terraform.lock.hcl
+terraform.tfstate*
+*.auto.tfvars*
+terraform.tfvars*
+!terraform.tfvars.example

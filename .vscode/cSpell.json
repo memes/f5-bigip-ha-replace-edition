@@ -1,0 +1,32 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "version": "0.2",
+    "language": "en",
+    "words": [
+        "direnv",
+        "DOCKERHUB",
+        "envrc",
+        "fileignoreconfig",
+        "goarch",
+        "gofumpt",
+        "golangci",
+        "gomod",
+        "goreleaser",
+        "hadolint",
+        "hashicorp",
+        "incpatch",
+        "ldflags",
+        "markdownlint",
+        "opencontainers",
+        "pastebin",
+        "thumbsup",
+        "trimpath",
+        "venv",
+        "wontfix",
+        "workdir",
+        "yamllint"
+    ],
+    "flagWords": [
+        "hte"
+    ]
+}

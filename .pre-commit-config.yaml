@@ -8,6 +8,9 @@ repos:
       - id: yamllint
         files: \.(yml|yaml|talismanrc)$
         types: [file, yaml]
+        # GDM templates extensively break linting rules but don't want to change
+        # them, so ignore them.
+        exclude: GDMv[12]
         entry: yamllint --strict
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.77.1

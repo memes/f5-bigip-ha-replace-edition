@@ -10,3 +10,6 @@ terraform.tfstate*
 *.auto.tfvars*
 terraform.tfvars*
 !terraform.tfvars.example
+
+# Ignore customer specific YAMLs
+customer.*.yaml

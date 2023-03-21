@@ -14,8 +14,6 @@ permissions:
 
 jobs:
   release-please:
-    # TODO @memes - enable release-please action as needed
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Release Please

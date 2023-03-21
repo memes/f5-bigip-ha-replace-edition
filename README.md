@@ -21,7 +21,7 @@ applicable to other private and public cloud deployments.
 
 |Initial Solution|Upstream version|Scenario|Notes|
 |-----------------|----------------|-------|-----|
-|[GDM v1 via-API, 3nic, PAYG]|v4.3.0|Edition change(Best -> Best+)||
+|[GDM v1 via-API, 3nic, PAYG]|v4.3.0|Throughput change(25Mbps -> 1Gbps)||
 
 ## Approach taken
 

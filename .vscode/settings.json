@@ -2,5 +2,18 @@
     "yaml.schemas": {
         "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yml",
         "https://goreleaser.com/static/schema.json": ".goreleaser.yml"
-    }
+    },
+    "[python]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false
+        },
+        "editor.formatOnType": false
+    },
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.testing.pytestEnabled": false,
+    "python.analysis.completeFunctionParens": false
 }

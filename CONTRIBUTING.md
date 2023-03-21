@@ -14,15 +14,9 @@ applied.
 [pre-commit] is used to ensure that all files have consistent formatting and to
 avoid committing secrets.
 
-<!-- TODO @memes - update if not a go project -->
-[golangci-lint] is used to enforce Go code passes
-linting and formatting rules ([gofumpt] is the expected Go code formatter). Rules
-are defined in [.golangci.yml](.golangci.yml).
-
 1. Install [pre-commit] in a virtual python environment or globally: see [instructions](https://pre-commit.com/#installation)
-2. Install [golangci-lint] from a binary or from source: see [instructions](https://golangci-lint.run/usage/install/#local-installation)
-3. Fork and clone this repo
-4. Install pre-commit hook to git
+2. Fork and clone this repo
+3. Install pre-commit hook to git
 
    E.g.
 
@@ -31,21 +25,10 @@ are defined in [.golangci.yml](.golangci.yml).
    pre-commit install
    ```
 
-5. Create a new branch for changes
-6. Execute tests and `golangci-lint` to validate changes. Please address any
-   issues raised.
-
-   ```shell
-   go test -v ./...
-   golangci-lint run
-   ```
-
-7. Commit and push changes for PR
+4. Create a new branch for changes
+5. Commit and push changes for PR
 
    The hook will ensure that `pre-commit` will be run against all staged changes
    during `git commit`.
 
 [pre-commit]: https://pre-commit.com/
-<!-- TODO @memes - remove if not a go project -->
-[gofumpt]: https://github.com/mvdan/gofumpt
-[golangci-lint]: https://golangci-lint.run/

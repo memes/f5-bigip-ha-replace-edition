@@ -21,10 +21,4 @@ jobs:
       - name: Release Please
         uses: GoogleCloudPlatform/release-please-action@v3.7.4
         with:
-          # TODO @memes - make sure release-type and package-name are correct.
-          release-type: go
-          package-name: repo-template
-          # TODO @memes - If this is a go project, or if other actions are to be
-          # triggered by the result of this action, set token to a secret with
-          # a GitHub PAT as content.
-          # token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          release-type: simple

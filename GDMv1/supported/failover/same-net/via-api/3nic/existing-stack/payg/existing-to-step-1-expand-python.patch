@@ -1,0 +1,69 @@
+diff -x .git -x '*~' -x '*#' -Naur -x .DS_Store upstream/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py step-1-expand/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py
+--- upstream/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py	2023-03-17 09:41:40.000000000 -0700
++++ step-1-expand/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py	2023-03-17 10:44:12.597060810 -0700
+@@ -705,6 +705,14 @@
+     {
+         'name': 'mgmtURL2',
+         'value': 'https://$(ref.bigip2-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
++    },
++    {
++        'name': 'mgmtURL3',
++        'value': 'https://$(ref.bigip3-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
++    },
++    {
++        'name': 'mgmtURL4',
++        'value': 'https://$(ref.bigip4-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
+     }]
+     return outputs
+
+@@ -725,6 +733,8 @@
+   storageName = 'f5-bigip-storage-' + context.env['deployment']
+   instanceName0 = 'bigip1-' + context.env['deployment']
+   instanceName1 = 'bigip2-' + context.env['deployment']
++  instanceName2 = 'bigip3-' + context.env['deployment']
++  instanceName3 = 'bigip4-' + context.env['deployment']
+   fwdRulesNamePrefix = context.env['deployment'] + '-fr'
+   forwardingRules = []
+   forwardingRuleOutputs = []
+@@ -743,6 +753,14 @@
+     'type': 'compute.v1.instance',
+     'properties': Instance(context, 'join', storageName, 'payg', '2', context.properties['availabilityZone2'], network1SharedVpc)
+   },{
++    'name': instanceName2,
++    'type': 'compute.v1.instance',
++    'properties': Instance(context, 'join', storageName, 'payg', '3', context.properties['availabilityZone1'], network1SharedVpc)
++  },{
++    'name': instanceName3,
++    'type': 'compute.v1.instance',
++    'properties': Instance(context, 'join', storageName, 'payg', '4', context.properties['availabilityZone2'], network1SharedVpc)
++  },{
+     'name': storageName,
+     'type': 'storage.v1.bucket',
+     'properties': {
+@@ -789,6 +807,26 @@
+       'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
+                           context.properties['availabilityZone2'], '/instances/', instanceName1])
+     }
++  },{
++    'name': instanceName2 + '-ti',
++    'type': 'compute.v1.targetInstances',
++    'properties': {
++      'description': instanceName2,
++      'natPolicy': 'NO_NAT',
++      'zone': context.properties['availabilityZone1'],
++      'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
++                          context.properties['availabilityZone1'], '/instances/', instanceName2])
++    }
++  },{
++    'name': instanceName3 + '-ti',
++    'type': 'compute.v1.targetInstances',
++    'properties': {
++      'description': instanceName3,
++      'natPolicy': 'NO_NAT',
++      'zone': context.properties['availabilityZone2'],
++      'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
++                          context.properties['availabilityZone2'], '/instances/', instanceName3])
++    }
+   }]
+
+   # add forwarding rules

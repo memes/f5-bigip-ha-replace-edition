@@ -1,0 +1,130 @@
+diff -x .git -x '*~' -x '*#' -Naur -x .DS_Store step-1-expand/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py step-2-reduce/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py
+--- step-1-expand/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py	2023-03-17 10:44:12.597060810 -0700
++++ step-3-reduce/f5-existing-stack-same-net-cluster-payg-3nic-bigip.py	2023-03-17 11:26:16.802672407 -0700
+@@ -97,7 +97,7 @@
+                         "2>&1 >> /var/log/cloud/google/install.log < /dev/null &"
+       ])
+       CFEJSON = '\n'.join([
+-                        'bigip1_host=$(/usr/bin/curl -s -f --retry 20 \'http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\' -H \'Metadata-Flavor: Google\')',
++                        'bigip3_host=$(/usr/bin/curl -s -f --retry 20 \'http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\' -H \'Metadata-Flavor: Google\')',
+                         'cat <<EOF > /config/cloud/cfe_config.json',
+                         '{',
+                         '    "class": "Cloud_Failover",',
+@@ -124,7 +124,7 @@
+                         '        "defaultNextHopAddresses": {',
+                         '            "discoveryType": "static",',
+                         '            "items": [',
+-                        '            "${bigip1_host}"',
++                        '            "${bigip3_host}"',
+                         '            ]',
+                         '        }',
+                         '    },',
+@@ -171,7 +171,7 @@
+                         "--join-group",
+                         "--device-group failover_group",
+                         "--remote-host ",
+-                        "$(ref.bigip1-" + context.env['deployment'] + ".networkInterfaces[1].networkIP)",
++                        "$(ref.bigip3-" + context.env['deployment'] + ".networkInterfaces[1].networkIP)",
+                         "--no-reboot",
+                         "2>&1 >> /var/log/cloud/google/install.log < /dev/null &"
+              ])
+@@ -187,7 +187,7 @@
+           'tmsh delete auth user srv_user'
+       ])
+       CFEJSON = '\n'.join([
+-                        'bigip2_host=$(/usr/bin/curl -s -f --retry 20 \'http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\' -H \'Metadata-Flavor: Google\')',
++                        'bigip4_host=$(/usr/bin/curl -s -f --retry 20 \'http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\' -H \'Metadata-Flavor: Google\')',
+                         'cat <<EOF > /config/cloud/cfe_config.json',
+                         '{',
+                         '    "class": "Cloud_Failover",',
+@@ -214,8 +214,8 @@
+                         '        "defaultNextHopAddresses": {',
+                         '            "discoveryType": "static",',
+                         '            "items": [',
+-                        '            "$(ref.bigip1-' + context.env['deployment'] + '.networkInterfaces[0].networkIP)",',
+-                        '            "${bigip2_host}"',
++                        '            "$(ref.bigip3-' + context.env['deployment'] + '.networkInterfaces[0].networkIP)",',
++                        '            "${bigip4_host}"',
+                         '            ]',
+                         '        }',
+                         '    },',
+@@ -700,18 +700,10 @@
+     },
+     {
+         'name': 'mgmtURL1',
+-        'value': 'https://$(ref.bigip1-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
+-    },
+-    {
+-        'name': 'mgmtURL2',
+-        'value': 'https://$(ref.bigip2-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
+-    },
+-    {
+-        'name': 'mgmtURL3',
+         'value': 'https://$(ref.bigip3-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
+     },
+     {
+-        'name': 'mgmtURL4',
++        'name': 'mgmtURL2',
+         'value': 'https://$(ref.bigip4-' + context.env['deployment'] + '.networkInterfaces[1]' + output_ip_options[pub_or_priv] + '):' + str(context.properties['mgmtGuiPort'])
+     }]
+     return outputs
+@@ -731,10 +723,8 @@
+   if str(context.properties['network1SharedVpc']).lower() != 'none':
+       network1SharedVpc = context.properties['network1SharedVpc']
+   storageName = 'f5-bigip-storage-' + context.env['deployment']
+-  instanceName0 = 'bigip1-' + context.env['deployment']
+-  instanceName1 = 'bigip2-' + context.env['deployment']
+-  instanceName2 = 'bigip3-' + context.env['deployment']
+-  instanceName3 = 'bigip4-' + context.env['deployment']
++  instanceName0 = 'bigip3-' + context.env['deployment']
++  instanceName1 = 'bigip4-' + context.env['deployment']
+   fwdRulesNamePrefix = context.env['deployment'] + '-fr'
+   forwardingRules = []
+   forwardingRuleOutputs = []
+@@ -747,18 +737,10 @@
+   {
+     'name': instanceName0,
+     'type': 'compute.v1.instance',
+-    'properties': Instance(context, 'create', storageName, 'payg', '1', context.properties['availabilityZone1'], network1SharedVpc)
++    'properties': Instance(context, 'create', storageName, 'payg', '3', context.properties['availabilityZone1'], network1SharedVpc)
+   },{
+     'name': instanceName1,
+     'type': 'compute.v1.instance',
+-    'properties': Instance(context, 'join', storageName, 'payg', '2', context.properties['availabilityZone2'], network1SharedVpc)
+-  },{
+-    'name': instanceName2,
+-    'type': 'compute.v1.instance',
+-    'properties': Instance(context, 'join', storageName, 'payg', '3', context.properties['availabilityZone1'], network1SharedVpc)
+-  },{
+-    'name': instanceName3,
+-    'type': 'compute.v1.instance',
+     'properties': Instance(context, 'join', storageName, 'payg', '4', context.properties['availabilityZone2'], network1SharedVpc)
+   },{
+     'name': storageName,
+@@ -807,26 +789,6 @@
+       'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
+                           context.properties['availabilityZone2'], '/instances/', instanceName1])
+     }
+-  },{
+-    'name': instanceName2 + '-ti',
+-    'type': 'compute.v1.targetInstances',
+-    'properties': {
+-      'description': instanceName2,
+-      'natPolicy': 'NO_NAT',
+-      'zone': context.properties['availabilityZone1'],
+-      'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
+-                          context.properties['availabilityZone1'], '/instances/', instanceName2])
+-    }
+-  },{
+-    'name': instanceName3 + '-ti',
+-    'type': 'compute.v1.targetInstances',
+-    'properties': {
+-      'description': instanceName3,
+-      'natPolicy': 'NO_NAT',
+-      'zone': context.properties['availabilityZone2'],
+-      'instance': ''.join([COMPUTE_URL_BASE, 'projects/', context.env['project'], '/zones/',
+-                          context.properties['availabilityZone2'], '/instances/', instanceName3])
+-    }
+   }]
+
+   # add forwarding rules

@@ -3,6 +3,8 @@
     "version": "0.2",
     "language": "en",
     "words": [
+        "bplus",
+        "BYOL",
         "direnv",
         "DOCKERHUB",
         "envrc",
@@ -19,6 +21,7 @@
         "markdownlint",
         "opencontainers",
         "pastebin",
+        "PAYG",
         "thumbsup",
         "trimpath",
         "venv",

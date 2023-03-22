@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 (2023-03-22)
+
+
+### Features
+
+* GDM v1 PAYG 3nic via-API example ([b4e28a5](https://github.com/memes/f5-bigip-ha-replace-edition/commit/b4e28a5b25422b55527c232935fcf85ed22aa76e))
+
+
+### Bug Fixes
+
+* Update GDM v1 via-api example to use upstream ([06a86a8](https://github.com/memes/f5-bigip-ha-replace-edition/commit/06a86a85c1166d7737410022d660f8912059dd79))
+
+## Changelog
+
 <!-- markdownlint-disable MD024 -->
 
 All notable changes to this project will be documented in this file.

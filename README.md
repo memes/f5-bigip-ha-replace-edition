@@ -27,58 +27,60 @@ applicable to other private and public cloud deployments.
 
 All the scenarios follow the basic steps:
 
-0. Starting point
+### Step 0: Starting point
 
-   ![Initial group](images/via-api/Initial%20group.png)
+![Initial group](images/via-api/Initial%20group.png)
 
-   * *BIG-IP VE 1* and *BIG-IP VE 2* are an existing HA pair deployed using one of
-     F5's supported or community repositories
-   * The cluster is in a known-good state
+* *BIG-IP VE 1* and *BIG-IP VE 2* are an existing HA pair deployed using one of
+   F5's supported or community repositories
+* The cluster is in a known-good state
 
-1. Expand the cluster; add new VEs running target edition
+### Step 1: Expand the cluster
 
-   > NOTE: This step is specific to your starting point; in order to preserve
-   > IaC state and avoid future issues follow the directions in **step-1-expand**
-   > folder for your scenario.
+The first step is to add new VEs running target edition
 
-   ![Expand](images/via-api/Expanded%20group.png)
+> NOTE: This step is specific to your starting point; in order to preserve
+> IaC state and avoid future issues follow the directions in **step-1-expand**
+> folder for your scenario.
 
-   * Two new BIG-IP VEs are added to GCP; *BIG-IP VE 3* and *BIG-IP VE 4*
-   * *BIG-IP VE 3* and *BIG-IP VE 4* are functionally standalone
-   * All four VEs should be running the same set of extensions (e.g. DO, AS3,
-     CFE - if applicable, etc.) and the same release versions of the extensions
+![Expand](images/via-api/Expanded%20group.png)
 
-2. Extend BIG-IP HA configuration to new VEs, while removing old VEs from configuration
+* Two new BIG-IP VEs are added to GCP; *BIG-IP VE 3* and *BIG-IP VE 4*
+* *BIG-IP VE 3* and *BIG-IP VE 4* are functionally standalone
+* All four VEs should be running the same set of extensions (e.g. DO, AS3,
+   CFE - if applicable, etc.) and the same release versions of the extensions
 
-   Good news! These steps are common to all the examples and could serve as a
-   starting point if your specific scenario is not in this repo. A detailed
-   walkthrough can be found in [Modifying HA].
+### Step 2: Extend BIG-IP HA configuration to new VEs
 
-   a. Extend *device trust* to include the new VEs
+Good news! These steps are common to all the examples and could serve as a
+starting point if your specific scenario is not in this repo. A detailed
+walkthrough can be found in [Modifying HA].
 
-      ![Expand](images/via-api/Added%20to%20device%20trust%20group.png)
+a. Extend *device trust* to include the new VEs
 
-   b. **Force Offline** the new VEs
+   ![Expand](images/via-api/Added%20to%20device%20trust%20group.png)
 
-      ![Forced offline](images/via-api/Forced%20offline.png)
+b. **Force Offline** the new VEs
 
-   c. Extend the *failover group* to the new VEs
+   ![Forced offline](images/via-api/Forced%20offline.png)
 
-      ![Expand](images/via-api/Added%20to%20failover%20group.png)
+c. Extend the *failover group* to the new VEs
 
-   d. Release Offline and force failover to a new VE
+   ![Expand](images/via-api/Added%20to%20failover%20group.png)
 
-      ![Expand](images/via-api/Force%20to%20standby.png)
+d. Release Offline and force failover to a new VE
 
-   e. Reduce failover group to exclude the original VEs
+   ![Expand](images/via-api/Force%20to%20standby.png)
 
-      ![Expand](images/via-api/Reduce%20failover%20group.png)
+e. Reduce failover group to exclude the original VEs
 
-   f. Reduce device trust to exclude the original VEs
+   ![Expand](images/via-api/Reduce%20failover%20group.png)
 
-      ![Expand](images/via-api/Reduce%20device%20trust.png)
+f. Reduce device trust to exclude the original VEs
 
-3. Remove the original VEs from deployment
+   ![Expand](images/via-api/Reduce%20device%20trust.png)
+
+### Step 3: Remove the original VEs from deployment
 
    > NOTE: This step is specific to your starting point; in order to preserve
    > IaC state and avoid future issues follow the directions in **step-3-reduce**

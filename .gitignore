@@ -13,3 +13,6 @@ terraform.tfvars*
 
 # Ignore customer specific YAMLs
 customer.*.yaml
+
+# Ignore local copies of upstream files/directories
+upstream

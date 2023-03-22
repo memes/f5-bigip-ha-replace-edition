@@ -32,6 +32,7 @@ templates for direct comparison to original sources.
    change line 60 to use the new image.
 
    <!-- spell-checker: disable -->
+   <!-- markdownlint-disable MD010 -->
    ```diff
    diff -x .git -x '*~' -x '*#' -Naur -x .DS_Store existing/f5-existing-stack-same-net-cluster-payg-3nic-bigip.yaml step-1-expand/f5-existing-stack-same-net-cluster-payg-3nic-bigip.yaml
    --- existing/f5-existing-stack-same-net-cluster-payg-3nic-bigip.yaml	2023-03-17 10:35:39.007054404 -0700
@@ -46,6 +47,7 @@ templates for direct comparison to original sources.
        instanceType: n1-standard-4
        ### (OPTIONAL) Enter the BIG-IP Management Port, the default is '443'.
    ```
+   <!-- markdownlint-enable MD010 -->
    <!-- spell-checker: enable -->
 
 3. Modify the GDM Python script to add two new VE instances, and their corresponding
@@ -192,8 +194,9 @@ Follow the steps in [Modify HA] to reconfigure BIG-IP device and failover groups
 
 4. Merge SCM changes to your main target
 
+![Final GDM state](images/after-step-3.png)
 At this point the Google Deployment Manager state managed by GCP, and your deployment
-templates will be aligned, and the active-standy HA pair has been updated to the
+templates will be aligned, and the active-standby HA pair has been updated to the
 new target edition.
 
 [GDM v1 via-API, 3nic, PAYG]: https://github.com/F5Networks/f5-google-gdm-templates/tree/v4.3.0/supported/failover/same-net/via-api/3nic/existing-stack/payg

@@ -19,9 +19,9 @@ applicable to other private and public cloud deployments.
 
 ## Scenarios in this repo
 
-|Initial Solution|Upstream version|Scenario|Notes|
+|Upstream F5 Solution|Upstream version|Linked scenario(s)|Notes|
 |-----------------|----------------|-------|-----|
-|[GDM v1 via-API, 3nic, PAYG]|v4.3.0|Throughput change(25Mbps -> 1Gbps)||
+|[GDM v1 via-API, 3nic, PAYG]|v4.3.0|[Throughput change(25Mbps -> 1Gbps)](GDMv1/supported/failover/same-net/via-api/3nic/existing-stack/payg/)||
 
 ## Approach taken
 
@@ -42,6 +42,8 @@ The first step is to add new VEs running target edition
 > NOTE: This step is specific to your starting point; in order to preserve
 > IaC state and avoid future issues follow the directions in **step-1-expand**
 > folder for your scenario.
+
+* [GDM v1 via API, 3nic, PAYG](GDMv1/supported/failover/same-net/via-api/3nic/existing-stack/payg/)
 
 ![Expand](images/via-api/Expanded%20group.png)
 
@@ -82,11 +84,13 @@ f. Reduce device trust to exclude the original VEs
 
 ### Step 3: Remove the original VEs from deployment
 
-   > NOTE: This step is specific to your starting point; in order to preserve
-   > IaC state and avoid future issues follow the directions in **step-3-reduce**
-   > folder for your scenario.
+> NOTE: This step is specific to your starting point; in order to preserve
+> IaC state and avoid future issues follow the directions in **step-3-reduce**
+> folder for your scenario.
 
-   ![Expand](images/via-api/Final%20group.png)
+* [GDM v1 via API, 3nic, PAYG](GDMv1/supported/failover/same-net/via-api/3nic/existing-stack/payg/)
+
+![Expand](images/via-api/Final%20group.png)
 
 [GDM v1 via-API, 3nic, PAYG]: https://github.com/F5Networks/f5-google-gdm-templates/tree/v4.3.0/supported/failover/same-net/via-api/3nic/existing-stack/payg
 [Modifying HA]: README.md

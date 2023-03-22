@@ -7,6 +7,8 @@ to a new base edition.
 
 [Step 1] that is appropriate for your scenario has been completed.
 
+* [GDM v1 via API, 3nic, PAYG](GDMv1/supported/failover/same-net/via-api/3nic/existing-stack/payg/)
+
 ![BIG-IPs after step 1](images/common/step1-ha-pair-two-standalone.png)
 
 * Original BIG-IP VEs (*bigip1* top left, and *bigip2* bottom left) are fully
@@ -333,6 +335,8 @@ initial onboarding, with GUI access through an administrative account
 Return to [step 3] for your specific scenario to reduce the number of BIG-IP VE
 instances that are running in Google Cloud. Since they are no longer handling
 traffic they can be removed.
+
+* [GDM v1 via API, 3nic, PAYG](GDMv1/supported/failover/same-net/via-api/3nic/existing-stack/payg/)
 
 [step 1]: README.md#step-1-expand-the-cluster
 [step 3]: README.md#step-3-remove-the-original-ves-from-deployment

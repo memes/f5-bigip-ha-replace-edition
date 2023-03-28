@@ -93,4 +93,4 @@ f. Reduce device trust to exclude the original VEs
 ![Expand](images/via-api/Final%20group.png)
 
 [GDM v1 via-API, 3nic, PAYG]: https://github.com/F5Networks/f5-google-gdm-templates/tree/v4.3.0/supported/failover/same-net/via-api/3nic/existing-stack/payg
-[Modifying HA]: README.md
+[Modifying HA]: Modifying_HA.md

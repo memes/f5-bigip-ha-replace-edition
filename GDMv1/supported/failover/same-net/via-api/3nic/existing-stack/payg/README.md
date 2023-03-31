@@ -113,6 +113,8 @@ templates for direct comparison to original sources.
    > to the forwardingRule to the **standby** BIG-IP VE instance. If this happens,
    > perform a *forced failover* on the active BIG-IP VE so that CFE can reset the
    > forwarding rule correctly.
+   >
+   > See [FAQ > CFE > No traffic]
 
 6. Set admin password on new VEs
 
@@ -191,6 +193,8 @@ Follow the steps in [Modify HA] to reconfigure BIG-IP device and failover groups
    > to the forwardingRule to the **standby** BIG-IP VE instance. If this happens,
    > perform a *forced failover* on the active BIG-IP VE so that CFE can reset the
    > forwarding rule correctly.
+   >
+   > See [FAQ > CFE > No traffic]
 
 4. Merge SCM changes to your main target
 
@@ -203,3 +207,4 @@ new target edition.
 [step-1-expand]: step-1-expand/
 [step-3-reduce]: step-3-reduce/
 [Modify HA]: ../../../../../../../../Modifying_HA.md
+[FAQ > CFE > No traffic]: https://github.com/memes/f5-bigip-ha-replace-edition/wiki/CFE-No-traffic

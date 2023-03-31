@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/memes/f5-bigip-ha-replace-edition/compare/v1.0.0...v1.0.1) (2023-03-31)
+
+
+### Bug Fixes
+
+* Add link to FAQ for CFE with no traffic ([dfc62c5](https://github.com/memes/f5-bigip-ha-replace-edition/commit/dfc62c564e5ddcf282517f7cecdbccfb7f208631))
+
 ## 1.0.0 (2023-03-22)
 
 

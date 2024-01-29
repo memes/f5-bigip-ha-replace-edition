@@ -1,7 +1,7 @@
 # NOTE: Installing black, isort, and pylint to keep my workflow happy, but
 # formating on save/paste must be disabled in VScode or other editor to avoid
 # large diffs with upstream GDM when making changes.
-black==23.12.1
+black==24.1.1
 isort==5.13.2
 pre-commit==3.6.0
 pylint==3.0.3

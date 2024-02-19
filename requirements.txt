@@ -3,5 +3,5 @@
 # large diffs with upstream GDM when making changes.
 black==24.1.1
 isort==5.13.2
-pre-commit==3.6.1
+pre-commit==3.6.2
 pylint==3.0.3

@@ -1,32 +1,46 @@
-# TODO: @memes - remove unused plugins for project
+# Checks to preform before allowing commit
 ---
 # spell-checker:disable
 repos:
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.29.0
+    rev: v1.35.1
     hooks:
       - id: yamllint
         files: \.(yml|yaml|talismanrc)$
-        types: [file, yaml]
+        types:
+          - file
+          - yaml
         # GDM templates extensively break linting rules but don't want to change
         # them, so ignore them.
         exclude: GDMv[12]
         entry: yamllint --strict
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.77.1
+    rev: v1.88.0
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
-        args: ['--args=--sort-by=required --hide=providers']
+        args:
+          - '--args=--sort-by=required --hide=providers'
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.1.0
+    hooks:
+      - id: conventional-pre-commit
+        stages:
+          - commit-msg
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
+      - id: check-toml
       - id: detect-private-key
       - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        args:
+          - -b
+          - main
       - id: trailing-whitespace
   - repo: https://github.com/thoughtworks/talisman
-    rev: v1.30.2
+    rev: v1.32.0
     hooks:
       - id: talisman-commit

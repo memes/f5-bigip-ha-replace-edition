@@ -1,7 +1,7 @@
 # Replace F5 BIG-IP edition in an HA pair
 
 ![GitHub release](https://img.shields.io/github/v/release/memes/f5-bigip-ha-replace-edition?sort=semver)
-![Maintenance](https://img.shields.io/maintenance/yes/2023)
+![Maintenance](https://img.shields.io/maintenance/yes/2024)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 This repo is a guide to changing the BIG-IP edition of a production HA pair in

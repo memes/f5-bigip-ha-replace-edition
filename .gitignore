@@ -16,3 +16,5 @@ customer.*.yaml
 
 # Ignore local copies of upstream files/directories
 upstream
+
+Gemfile.lock

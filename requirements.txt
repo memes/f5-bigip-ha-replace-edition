@@ -1,7 +1,1 @@
-# NOTE: Installing black, isort, and pylint to keep my workflow happy, but
-# formating on save/paste must be disabled in VScode or other editor to avoid
-# large diffs with upstream GDM when making changes.
-black==24.2.0
-isort==5.13.2
-pre-commit==3.6.2
-pylint==3.1.0
+# Python requirements for this repo

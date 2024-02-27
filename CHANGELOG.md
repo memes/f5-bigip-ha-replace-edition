@@ -1,4 +1,11 @@
 # Changelog
+<!-- markdownlint-disable MD012 MD024 -->
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 
 ## [1.0.1](https://github.com/memes/f5-bigip-ha-replace-edition/compare/v1.0.0...v1.0.1) (2023-03-31)
 
@@ -18,12 +25,3 @@
 ### Bug Fixes
 
 * Update GDM v1 via-api example to use upstream ([06a86a8](https://github.com/memes/f5-bigip-ha-replace-edition/commit/06a86a85c1166d7737410022d660f8912059dd79))
-
-## Changelog
-
-<!-- markdownlint-disable MD024 -->
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

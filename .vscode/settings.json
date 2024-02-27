@@ -1,19 +1,27 @@
 {
     "yaml.schemas": {
         "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yml",
-        "https://goreleaser.com/static/schema.json": ".goreleaser.yml"
     },
     "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": false,
         "editor.formatOnPaste": false,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": false
+            "source.organizeImports": "never"
         },
         "editor.formatOnType": false
     },
-    "python.linting.enabled": true,
-    "python.linting.lintOnSave": true,
-    "python.linting.pylintEnabled": true,
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "isort.importStrategy": "fromEnvironment",
+    "black-formatter.importStrategy": "fromEnvironment",
+    "pylint.importStrategy": "fromEnvironment",
+    "python.languageServer": "Pylance",
     "python.testing.pytestEnabled": false,
-    "python.analysis.completeFunctionParens": false
+    "python.analysis.completeFunctionParens": false,
+    "editor.rulers": [
+        120
+    ]
 }

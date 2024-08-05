@@ -1,6 +1,6 @@
 # Python requirements for hacking on this repo
 black==24.4.2
 isort==5.13.2
-pre-commit==3.7.1
+pre-commit==3.8.0
 pylint==3.2.6
 -r requirements.txt

@@ -2,5 +2,5 @@
 black==25.9.0
 isort==7.0.0
 pre-commit==4.3.0
-pylint==3.3.9
+pylint==4.0.2
 -r requirements.txt
